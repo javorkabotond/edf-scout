@@ -12,8 +12,9 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class EdfFileService {
@@ -22,23 +23,29 @@ public class EdfFileService {
     private String DATA_DIRECTORY;
 
     public List<EdfFileModel> getEdfFiles() {
-        List<EdfFileModel> results = new ArrayList<>();
         File folder = new File(DATA_DIRECTORY);
 
         if (!folder.exists() || !folder.isDirectory()) {
-            return results;
+            throw new IllegalStateException(
+                    "The specified data directory does not exist or is not a directory: " + DATA_DIRECTORY
+            );
         }
 
-        for (File file : Objects.requireNonNull(folder.listFiles())) {
-            if (file.getName().toLowerCase().endsWith(".edf")) {
-                results.add(parseEdf(file));
-            }
+        File[] files = folder.listFiles();
+        if (files == null) {
+            throw new IllegalStateException(
+                    "Cannot read files from directory: " + DATA_DIRECTORY + ". " +
+                            "It may not exist or is not accessible."
+            );
         }
 
-        return results;
+        return Arrays.stream(files)
+                .filter(file -> file.getName().toLowerCase().endsWith(".edf"))
+                .map(this::parseEdf)
+                .collect(Collectors.toList());
     }
 
-    private EdfFileModel parseEdf(File file) {
+    EdfFileModel parseEdf(File file) {
         try {
             EDFreader reader = new EDFreader(file.getAbsolutePath());
 

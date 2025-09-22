@@ -85,4 +85,3 @@ that extracts metadata from EDF files and makes it available via a simple API.
    ```bash
    npm run dev
 
-### UI screen

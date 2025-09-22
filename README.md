@@ -86,5 +86,5 @@ that extracts metadata from EDF files and makes it available via a simple API.
    npm run dev
 
 ### UI screens
-![Alt text](screen/Screenshot 2025-09-22 at 21.40.01.png)
-![Alt text](screen/Screenshot 2025-09-22 at 21.40.15.png)
+![Local Image](screen/Screenshot 2025-09-22 at 21.40.01.png)
+![Local Image](screen/Screenshot 2025-09-22 at 21.40.15.png)

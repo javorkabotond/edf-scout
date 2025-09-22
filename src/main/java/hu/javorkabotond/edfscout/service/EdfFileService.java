@@ -4,8 +4,8 @@ import hu.javorkabotond.edfscout.model.EdfFileModel;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import utils.EDFException;
-import utils.EDFreader;
+import hu.javorkabotond.edfscout.utils.EDFException;
+import hu.javorkabotond.edfscout.utils.EDFreader;
 
 
 import java.io.File;
@@ -30,7 +30,7 @@ public class EdfFileService {
      * The directory where EDF files are stored.
      * Defaults to /tmp/edf if not specified in the application properties.
      */
-    @Value("${DATA_DIRECTORY:/tmp/edf}")
+    @Value("${DATA_DIRECTORY}")
     private String DATA_DIRECTORY;
 
     /**
@@ -69,7 +69,7 @@ public class EdfFileService {
      * @return an {@link EdfFileModel} containing metadata about the file;
      *         if parsing fails, a model with valid=false and an error message
      */
-    EdfFileModel parseEdf(File file) {
+    protected EdfFileModel parseEdf(File file) {
         try {
             EDFreader reader = new EDFreader(file.getAbsolutePath());
 

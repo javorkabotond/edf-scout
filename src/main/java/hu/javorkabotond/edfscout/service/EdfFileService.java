@@ -90,7 +90,7 @@ public class EdfFileService {
             return EdfFileModel.builder()
                     .fileName(file.getName())
                     .valid(true)
-                    .identifier(reader.getRecording())
+                    .identifier(file.getName())
                     .recordingDate(recordingDate)
                     .patientName(reader.getPatientName())
                     .numberOfChannels(reader.getNumSignals())

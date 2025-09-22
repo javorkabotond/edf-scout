@@ -1,4 +1,4 @@
-package utils;
+package hu.javorkabotond.edfscout.utils;
 
 /*
 *****************************************************************************

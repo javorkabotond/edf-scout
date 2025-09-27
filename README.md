@@ -85,4 +85,7 @@ that extracts metadata from EDF files and makes it available via a simple API.
    ```bash
    npm run dev
 
+### Screen
 
+![image alt](https://github.com/javorkabotond/edf-scout/blob/25631326f9812cca59df90456738ae8d04563585/Screenshot%202025-09-27%20at%2018.55.24.png)
+![image alt](https://github.com/javorkabotond/edf-scout/blob/25631326f9812cca59df90456738ae8d04563585/Screenshot%202025-09-27%20at%2018.55.24.png)
